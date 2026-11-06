@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>envcheck — falla rápido cuando .env se desvía</title>
+    <meta
+      name="description"
+      content="CLI en Go que compara .env con .env.example y detecta claves ausentes, vacías o extra antes de arrancar el servicio."
+    />
+    <link rel="canonical" href="https://melinoeluna4.github.io/envcheck/" />
+    <meta property="og:title" content="envcheck — Go CLI para validar .env" />
+    <meta
+      property="og:description"
+      content="Detecta claves ausentes, vacías o extra antes de que el servicio arranque."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://melinoeluna4.github.io/envcheck/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="theme-color" content="#030804" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Saltar al contenido</a>
+
+    <header class="top">
+      <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">$</span> envcheck</a>
+      <nav aria-label="Enlaces del proyecto">
+        <a href="https://github.com/melinoeluna4/envcheck">GitHub <span aria-hidden="true">↗</span></a>
+        <a href="https://melinoeluna4.github.io/proyectos/envcheck/">Portfolio</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <figure class="terminal" aria-labelledby="terminal-caption">
+          <figcaption class="sr-only" id="terminal-caption">
+            Ejemplo de salida de envcheck con una clave ausente, una vacía y una extra
+          </figcaption>
+          <div class="terminal__bar">
+            <span></span><span></span><span></span>
+            <p>envcheck — /bin/sh</p>
+          </div>
+          <div class="terminal__body">
+            <p><span class="prompt">$</span> envcheck</p>
+            <pre><code>envcheck: .env against .env.example
+missing (1): DATABASE_URL
+empty (1): API_TOKEN
+extra (1): DEBUG
+FAIL</code></pre>
+            <p class="cursor" aria-hidden="true">█</p>
+          </div>
+        </figure>
+
+        <div class="hero__copy">
+          <p class="kicker">Go CLI · configuración</p>
+          <h1 id="hero-title">Falla rápido cuando <code>.env</code> se desvía.</h1>
+          <p class="lede">
+            Compara tu entorno real con la plantilla y detecta claves ausentes, vacías o extra
+            antes de que el servicio arranque.
+          </p>
+          <div class="actions">
+            <button
+              class="button button--primary"
+              type="button"
+              data-copy="go install github.com/melinoeluna4/envcheck@latest"
+            >
+              Copiar instalación
+            </button>
+            <a class="button button--ghost" href="https://github.com/melinoeluna4/envcheck">
+              Ver repositorio <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <p class="meta">Go 1.27 · sin dependencias · tests + CI</p>
+        </div>
+      </section>
+
+      <section class="features" aria-labelledby="features-title">
+        <p class="kicker">Qué comprueba</p>
+        <h2 id="features-title">Tres errores, una salida clara</h2>
+        <div class="feature-grid">
+          <article>
+            <span>01</span>
+            <h3>Claves ausentes</h3>
+            <p>La plantilla pide una variable que el entorno no tiene. El proceso no debería arrancar.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Valores vacíos</h3>
+            <p>La clave existe, pero el valor está vacío. Es el fallo que más tarde se convierte en un panic.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Claves extra</h3>
+            <p>Un aviso por defecto. Con <code>-strict</code> se convierte en error para entornos controlados.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="install" aria-labelledby="install-title">
+        <div>
+          <p class="kicker">Instalación</p>
+          <h2 id="install-title">Una línea</h2>
+          <p>Go instala el binario en tu <code>PATH</code>. No hay dependencias que revisar.</p>
+        </div>
+        <div class="code-card">
+          <pre><code>go install github.com/melinoeluna4/envcheck@latest</code></pre>
+          <button
+            class="button button--small"
+            type="button"
+            data-copy="go install github.com/melinoeluna4/envcheck@latest"
+          >
+            Copiar
+          </button>
+        </div>
+      </section>
+
+      <section class="usage" aria-labelledby="usage-title">
+        <p class="kicker">Uso</p>
+        <h2 id="usage-title">En local o en CI</h2>
+        <div class="code-grid">
+          <article>
+            <h3>Archivos por defecto</h3>
+            <pre><code>envcheck</code></pre>
+            <p>Lee <code>.env</code> y <code>.env.example</code> desde el directorio actual.</p>
+          </article>
+          <article>
+            <h3>Modo estricto + JSON</h3>
+            <pre><code>envcheck -strict -json</code></pre>
+            <p>Ideal para un pipeline que necesita un informe parseable y cero claves extra.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="next" aria-labelledby="next-title">
+        <p class="kicker">Sigue explorando</p>
+        <h2 id="next-title">Más herramientas en Go</h2>
+        <div class="next-links">
+          <a href="https://melinoeluna4.github.io/portwait/">portwait <span>→</span></a>
+          <a href="https://melinoeluna4.github.io/httpcheck/">httpcheck <span>→</span></a>
+          <a href="https://melinoeluna4.github.io/treehash/">treehash <span>→</span></a>
+          <a href="https://melinoeluna4.github.io/mdtoc/">mdtoc <span>→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bottom">
+      <p>envcheck · una herramienta de <a href="https://melinoeluna4.github.io/">Melinoe Luna</a></p>
+      <p><a href="https://github.com/melinoeluna4/envcheck">README</a> · <a href="https://melinoeluna4.github.io/proyectos/envcheck/">Ficha</a></p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
